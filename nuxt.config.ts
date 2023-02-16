@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   app: {
     baseURL: "/blank-blog",
+    head: { title: "空白博客" },
   },
   modules: ["@nuxt/content"],
 });
