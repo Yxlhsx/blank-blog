@@ -1,0 +1,1 @@
+import{e as r}from"./entry.1e25349e.js";import{a2 as o,a3 as t,ar as n}from"./defu.9b6c8014.js";const s={};function a(e,c){return o(),t("strong",null,[n(e.$slots,"default")])}const _=r(s,[["render",a]]);export{_ as default};
