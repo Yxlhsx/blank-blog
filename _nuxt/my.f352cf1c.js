@@ -1,0 +1,1 @@
+import t from"./nuxt-link.0f43a57d.js";import{e as a}from"./entry.31fb30ac.js";import{$ as o,a0 as n,a5 as c,aa as r,a6 as s,a1 as _,au as m}from"./defu.09480453.js";const f={},l=_("p",null,"我的页面",-1);function p(u,d){const e=t;return o(),n(s,null,[l,c(e,{to:"/"},{default:r(()=>[m("首页")]),_:1})],64)}const h=a(f,[["render",p]]);export{h as default};
