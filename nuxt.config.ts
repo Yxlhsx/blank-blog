@@ -4,8 +4,5 @@ export default defineNuxtConfig({
         baseURL: '/blank-blog',
         head: { title: '空白博客' }
     },
-    alias: {
-        '@': '/<rootDir>'
-    },
     modules: ['@nuxt/content']
 })
