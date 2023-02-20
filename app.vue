@@ -16,6 +16,7 @@
     padding: 0;
 }
 body {
+    overflow: hidden;
     background-color: #f3f3f3;
 }
 

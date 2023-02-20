@@ -1,7 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const route = useRoute()
+</script>
 
 <template>
     <aside class="app-sidebar">
+        <section v-show="route.path != '/'" class="user-info sidebar-block">
+            <span>返回</span>
+        </section>
         <section class="user-info sidebar-block"></section>
         <section class="tag sidebar-block"></section>
     </aside>
