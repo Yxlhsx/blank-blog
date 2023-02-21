@@ -1,27 +1,165 @@
 <script setup lang="ts">
 const route = useRoute()
+
+const links = ref([
+    {
+        name: '邮箱',
+        link: ''
+    },
+    {
+        name: 'GitHub',
+        link: ''
+    },
+    {
+        name: 'BiliBili',
+        link: ''
+    }
+])
+
+const tags = ref([
+    {
+        name: 'JavaScript',
+        count: 20,
+        link: ''
+    },
+    {
+        name: 'SpringBoot',
+        count: 2,
+        link: ''
+    },
+    {
+        name: 'NuxtJs',
+        count: 6,
+        link: ''
+    },
+    {
+        name: 'Mysql',
+        count: 4,
+        link: ''
+    },
+    {
+        name: 'Java',
+        count: 9,
+        link: ''
+    },
+    {
+        name: 'Flutter',
+        count: 10,
+        link: ''
+    }
+])
 </script>
 
 <template>
     <aside class="app-sidebar">
-        <section v-show="route.path != '/'" class="user-info sidebar-block">
+        <section v-show="route.path != '/'" class="sidebar-block">
             <span>返回</span>
         </section>
-        <section class="user-info sidebar-block"></section>
-        <section class="tag sidebar-block"></section>
+        <!-- 用户栏 -->
+        <section class="user-block sidebar-block">
+            <div class="my">
+                <img src="~assets/logo.png" alt="logo" />
+                <div>
+                    <h3>嘎嘣脆</h3>
+                    <h5>“努力，奋斗”</h5>
+                </div>
+            </div>
+            <ul class="links">
+                <li v-for="link in links" class="link">{{ link.name }}</li>
+            </ul>
+        </section>
+
+        <!-- 标签栏 -->
+        <section class="tag-block sidebar-block">
+            <h2>标签</h2>
+            <ul class="tags">
+                <li v-for="tag in tags" class="tag">{{ `#${tag.name}(${tag.count})` }}</li>
+            </ul>
+        </section>
     </aside>
 </template>
 
-<style>
-aside {
+<style lang="scss">
+.app-sidebar {
     width: 280px;
+
+    .sidebar-block {
+        box-sizing: border-box;
+        margin-bottom: 20px;
+        padding: 20px;
+        width: 100%;
+        min-height: 100px;
+        background-color: #ffffff;
+        border-radius: 10px;
+    }
 }
 
-aside > section.sidebar-block {
-    margin-bottom: 20px;
-    width: 100%;
-    height: 200px;
-    background-color: #ffffff;
-    border-radius: 10px;
+// 用户栏部分
+.app-sidebar > .user-block {
+    .my {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-bottom: 20px;
+
+        img {
+            width: 56px;
+            height: 56px;
+        }
+
+        div {
+            text-align: center;
+
+            h3 {
+                font-weight: 600;
+                font-size: 20px;
+                color: #282828;
+            }
+
+            h5 {
+                font-weight: 400;
+                font-size: 14px;
+                color: rgba(40, 40, 40, 0.6);
+            }
+        }
+    }
+
+    .links {
+        display: flex;
+        justify-content: space-evenly;
+        list-style: none;
+
+        .link {
+            font-weight: 400;
+            font-size: 14px;
+            text-decoration-line: underline;
+            color: rgba(40, 40, 40, 0.6);
+        }
+    }
+}
+
+// 标签栏部分
+.app-sidebar > .tag-block {
+    h2 {
+        font-weight: 600;
+        font-size: 20px;
+        color: #282828;
+        text-align: center;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+
+        .tag {
+            margin-right: 10px;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 24px;
+            text-decoration-line: underline;
+            color: rgba(40, 40, 40, 0.6);
+        }
+    }
 }
 </style>

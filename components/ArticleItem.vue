@@ -12,11 +12,11 @@ const props = defineProps<ArticleItemProps>()
 
 <template>
     <article class="article-item">
-        <NuxtLink :to="props.path">{{ props.title }}</NuxtLink>
-        <h5>{{ props.createTime }}</h5>
-        <p>{{ props.desc }}</p>
-        <ul class="tags">
-            <li v-for="tag in props.tags" class="tag">{{ tag }}</li>
+        <NuxtLink class="article-item-title" :to="props.path">{{ props.title }}</NuxtLink>
+        <h5 class="article-item-create-time">{{ props.createTime }}</h5>
+        <p class="article-item-desc">{{ props.desc }}</p>
+        <ul class="article-item-tags">
+            <li v-for="tag in props.tags" class="article-item-tag">#{{ tag }}</li>
         </ul>
     </article>
 </template>
@@ -25,18 +25,45 @@ const props = defineProps<ArticleItemProps>()
 article.article-item {
     box-sizing: border-box;
     margin-bottom: 20px;
-    padding: 10px;
-    height: 140px;
+    padding: 20px;
+    min-height: 140px;
     background-color: #ffffff;
     border-radius: 10px;
 }
 
-ul.tags {
+.article-item-title {
+    font-weight: 600;
+    font-size: 22px;
+    color: #282828;
+}
+
+.article-item-create-time {
+    margin: 10px 0;
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(40, 40, 40, 0.25);
+}
+
+.article-item-desc {
+    margin-bottom: 10px;
+    font-weight: 400;
+    font-size: 16px;
+    color: rgba(40, 40, 40, 0.8);
+}
+
+ul.article-item-tags {
     display: flex;
     list-style: none;
 }
 
-ul.tags > li.tag:not(:last-child) {
+ul.article-item-tags > li.article-item-tag {
+    font-weight: 400;
+    font-size: 14px;
+    text-decoration-line: underline;
+    color: rgba(40, 40, 40, 0.6);
+}
+
+ul.article-item-tags > li.article-item-tag:not(:last-child) {
     margin-right: 20px;
 }
 </style>
