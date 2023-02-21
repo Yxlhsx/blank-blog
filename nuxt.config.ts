@@ -4,6 +4,5 @@ export default defineNuxtConfig({
         baseURL: '/blank-blog',
         head: { title: '空白博客' }
     },
-    ssr: false,
     modules: ['@nuxt/content']
 })
