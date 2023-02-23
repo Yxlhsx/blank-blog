@@ -1,1 +1,0 @@
-import{$ as t,a0 as a,a1 as o,ad as n,a5 as c,a4 as s,at as r,av as _}from"./app.config.2c399255.js";import{e as m}from"./entry.a1731325.js";const d={},l=s("p",null,"我的页面",-1);function f(p,u){const e=r;return t(),a(c,null,[l,o(e,{to:"/"},{default:n(()=>[_("首页")]),_:1})],64)}const N=m(d,[["render",f]]);export{N as default};
