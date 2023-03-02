@@ -1,4 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+onMounted(async () => {
+    console.log(
+        await queryContent('/')
+            .where({ keywords: { $contains: 'Quarkus' } })
+            .find()
+    )
+})
+</script>
 
 <template>
     <div class="app-nav-search">搜索</div>
