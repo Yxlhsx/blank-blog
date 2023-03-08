@@ -32,5 +32,6 @@ div.app-container {
 main {
     margin-top: 20px;
     width: 800px;
+    min-height: calc(100vh - 60px);
 }
 </style>

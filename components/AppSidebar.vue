@@ -1,5 +1,10 @@
 <script setup lang="ts">
+const router = useRouter()
 const route = useRoute()
+
+function handleGoBack() {
+    router.go(-1)
+}
 
 const links = ref([
     {
@@ -52,8 +57,12 @@ const tags = ref([
 
 <template>
     <aside class="app-sidebar">
-        <section v-show="route.path != '/'" class="sidebar-block">
-            <span>返回</span>
+        <section
+            v-show="route.path != '/'"
+            style="padding-top: 10px; padding-bottom: 10px"
+            class="sidebar-block"
+        >
+            <span class="go-back" @click="handleGoBack">返回上一页</span>
         </section>
         <!-- 用户栏 -->
         <section class="user-block sidebar-block">
@@ -88,9 +97,19 @@ const tags = ref([
         margin-bottom: 20px;
         padding: 20px;
         width: 100%;
-        min-height: 100px;
-        background-color: #ffffff;
+
         border-radius: 10px;
+        background-color: #ffffff;
+
+        text-align: center;
+        font-size: 16px;
+        font-weight: 600;
+        color: rgba($color: #282828, $alpha: 0.8);
+    }
+
+    .go-back {
+        cursor: pointer;
+        text-decoration: underline;
     }
 }
 

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ParsedContent } from '@nuxt/content/dist/runtime/types'
 import { Article } from '~~/types/article'
 
 const articleList = ref<Article[]>([])
@@ -9,18 +8,18 @@ const testDesc =
 
 articleList.value = await queryContent<Article>('/article').find()
 
-onMounted(() => {
-    console.log(articleList.value[0].keywords)
-})
+onMounted(() => {})
 </script>
 
 <template>
-    <ArticleItem
-        v-for="article in articleList"
-        :path="article._path"
-        :title="article.title"
-        :create-time="'2023-02-18'"
-        :desc="testDesc"
-        :tags="['Java', 'SpringBoot']"
-    />
+    <div>
+        <ArticleItem
+            v-for="article in articleList"
+            :path="article._path"
+            :title="article.title"
+            :create-time="'2023-02-18'"
+            :desc="testDesc"
+            :tags="['Java', 'SpringBoot']"
+        />
+    </div>
 </template>
