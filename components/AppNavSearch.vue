@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { Article } from '~~/types/article'
 
-interface AppNavSearchProps {
+const props = defineProps<{
     placeholder?: string
-}
+}>()
 
-const props = defineProps<AppNavSearchProps>()
+const searchInputEle = ref<HTMLInputElement>() // 搜索输入框实例
 
-const searchInputEle = ref<HTMLInputElement>()
+// 搜索对话框部分
 const opened = ref(false)
 function openSearchDialog() {
     opened.value = true
@@ -20,13 +20,13 @@ function closeSearchDialog() {
     opened.value = false
 }
 
+// 搜索部分
 const searchValue = ref('')
 const articleList = ref<Article[]>([])
 async function handleQuery() {
     articleList.value = await queryContent<Article>('/')
         .where({ keywords: { $contains: searchValue.value } })
         .find()
-    console.log(articleList.value)
 }
 </script>
 
@@ -107,8 +107,11 @@ $search-dialog-position-left: $search-input-width + ($search-dialog-padding * 2)
     }
 
     .search-article-list {
-        margin-top: 20px;
         list-style: none;
+
+        & > :nth-child(1) {
+            margin-top: 16px;
+        }
 
         .search-article-item {
             padding: 5px 0;
