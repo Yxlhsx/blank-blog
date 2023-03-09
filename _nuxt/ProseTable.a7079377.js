@@ -1,0 +1,1 @@
+import{i as r}from"./entry.11c2c7bc.js";import{a6 as a,a7 as o,aA as t}from"./query.d67b8d24.js";const s={};function n(e,c){return a(),o("table",null,[t(e.$slots,"default")])}const _=r(s,[["render",n]]);export{_ as default};
