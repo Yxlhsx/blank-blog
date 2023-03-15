@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { Article } from '~~/types/article'
 
-const props = defineProps<{
+type AppNavSearchProps = {
     placeholder?: string
-}>()
+}
+
+const props = defineProps<AppNavSearchProps>()
 
 const searchInputEle = ref<HTMLInputElement>() // 搜索输入框实例
 
