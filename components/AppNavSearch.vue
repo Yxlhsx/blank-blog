@@ -136,6 +136,6 @@ $search-dialog-position-left: $search-input-width + ($search-dialog-padding * 2)
     width: 100vw;
     height: 100vh;
 
-    background-color: rgba(40, 40, 40, 0.8);
+    background-color: rgba(40, 40, 40, 0.6);
 }
 </style>

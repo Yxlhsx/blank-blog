@@ -9,15 +9,15 @@ function handleGoBack() {
 const links = ref([
     {
         name: '邮箱',
-        link: ''
+        link: 'yxlhsx@qq.com'
     },
     {
         name: 'GitHub',
-        link: ''
+        link: 'https://github.com/Yxlhsx'
     },
     {
         name: 'BiliBili',
-        link: ''
+        link: 'https://space.bilibili.com/31257626?spm_id_from=333.1007.0.0'
     }
 ])
 
@@ -74,7 +74,9 @@ const tags = ref([
                 </div>
             </div>
             <ul class="links">
-                <li v-for="link in links" class="link">{{ link.name }}</li>
+                <li v-for="item in links" class="link">
+                    <NuxtLink :to="item.link">{{ item.name }}</NuxtLink>
+                </li>
             </ul>
         </section>
 
