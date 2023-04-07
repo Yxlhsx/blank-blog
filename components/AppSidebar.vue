@@ -53,6 +53,29 @@ const tags = ref([
         link: ''
     }
 ])
+
+function copy(text: string) {
+    if (navigator.clipboard) {
+        navigator.clipboard
+            .writeText(text)
+            .then(() => {
+                alert('已复制到剪贴板！')
+            })
+            .catch(err => {
+                console.error('复制失败：', err)
+            })
+    } else {
+        const input = document.createElement('input')
+        input.value = text
+        document.body.appendChild(input)
+        input.select()
+        if (document.execCommand('copy')) {
+            document.execCommand('copy')
+            alert('已复制到剪贴板！')
+        }
+        document.body.removeChild(input)
+    }
+}
 </script>
 
 <template>
@@ -64,6 +87,7 @@ const tags = ref([
         >
             <span class="go-back" @click="handleGoBack">返回上一页</span>
         </section>
+
         <!-- 用户栏 -->
         <section class="user-block sidebar-block">
             <div class="my">
@@ -75,7 +99,10 @@ const tags = ref([
             </div>
             <ul class="links">
                 <li v-for="item in links" class="link">
-                    <NuxtLink :to="item.link">{{ item.name }}</NuxtLink>
+                    <span v-if="item.link.includes('@')" @click="copy(item.link)">{{
+                        item.name
+                    }}</span>
+                    <NuxtLink v-else :to="item.link">{{ item.name }}</NuxtLink>
                 </li>
             </ul>
         </section>
