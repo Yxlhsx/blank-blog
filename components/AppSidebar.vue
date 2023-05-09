@@ -117,7 +117,7 @@ function copy(text: string) {
     </aside>
 </template>
 
-<style lang="scss">
+<!-- <style>
 .app-sidebar {
     width: 280px;
 
@@ -210,4 +210,4 @@ function copy(text: string) {
         }
     }
 }
-</style>
+</style> -->

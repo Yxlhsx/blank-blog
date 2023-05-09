@@ -4,7 +4,7 @@ export default defineNuxtConfig({
         baseURL: '/blank-blog',
         head: { title: '空白博客' }
     },
-    modules: ['@nuxt/content'],
+    modules: ['@nuxtjs/tailwindcss', '@nuxt/content'],
     content: {
         highlight: true
     }

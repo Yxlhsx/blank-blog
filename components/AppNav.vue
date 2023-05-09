@@ -1,17 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-    <header class="app-nav">
+    <header class="flex justify-center bg-white">
         <AppNavSearch />
     </header>
 </template>
-
-<style lang="scss">
-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60px;
-    background-color: #ffffff;
-}
-</style>

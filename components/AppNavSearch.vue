@@ -1,31 +1,35 @@
 <script setup lang="ts">
+import { onClickOutside } from '@vueuse/core'
 import { Article } from '~~/types/article'
 
-type AppNavSearchProps = {
+interface AppNavSearchProps {
     placeholder?: string
 }
-
 const props = defineProps<AppNavSearchProps>()
 
-const searchInputEle = ref<HTMLInputElement>() // 搜索输入框实例
+// 搜索输入框实例
+const searchInputEle = ref<HTMLInputElement>()
 
 // 搜索对话框部分
 const opened = ref(false)
-function openSearchDialog() {
+const openSearchDialog = () => {
     opened.value = true
-
     nextTick(() => {
         searchInputEle.value?.focus()
     })
 }
-function closeSearchDialog() {
+const closeSearchDialog = () => {
     opened.value = false
 }
+const searchBlockEle = ref()
+onClickOutside(searchBlockEle, event => {
+    closeSearchDialog()
+})
 
 // 搜索部分
 const searchValue = ref('')
 const articleList = ref<Article[]>([])
-async function handleQuery() {
+const handleQuery = async () => {
     articleList.value = await queryContent<Article>('/')
         .where({ keywords: { $contains: searchValue.value } })
         .find()
@@ -34,29 +38,45 @@ async function handleQuery() {
 
 <template>
     <div>
-        <div class="app-nav-search" @click="openSearchDialog">搜索</div>
-        <div v-if="opened" class="app-nav-search-dialog">
-            <input
-                v-model="searchValue"
-                ref="searchInputEle"
-                type="text"
-                :placeholder="props.placeholder || '请输入关键词'"
-                @keypress.enter="handleQuery"
-            />
-            <ul class="search-article-list">
-                <li v-for="(article, index) in articleList" class="search-article-item">
-                    <span style="text-decoration: none">{{ index + 1 }}、</span>
-                    <NuxtLink :to="article._path" @click="closeSearchDialog">
-                        {{ article.title }}
-                    </NuxtLink>
-                </li>
-            </ul>
+        <div
+            class="m-3 w-64 h-10 bg-gray-100 rounded-md text-center text-gray-900 text-lg leading-10 cursor-pointer"
+            @click="openSearchDialog"
+        >
+            搜索
         </div>
-        <div v-if="opened" class="app-nav-search-mask" @click="closeSearchDialog"></div>
+        <template v-if="opened">
+            <Teleport to="body">
+                <div
+                    class="z-[100] fixed top-0 left-0 flex justify-center w-screen h-screen bg-black bg-opacity-30 backdrop-blur"
+                >
+                    <div
+                        class="overflow-auto mt-10 p-10 max-h-[80vh] bg-white rounded-md"
+                        ref="searchBlockEle"
+                    >
+                        <input
+                            v-model="searchValue"
+                            class="w-96"
+                            ref="searchInputEle"
+                            type="text"
+                            :placeholder="props.placeholder || '请输入关键词'"
+                            @keypress.enter="handleQuery"
+                        />
+                        <ul class="search-article-list">
+                            <li v-for="(article, index) in articleList" class="search-article-item">
+                                <span style="text-decoration: none">{{ index + 1 }}、</span>
+                                <NuxtLink :to="article._path">
+                                    {{ article.title }}
+                                </NuxtLink>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </Teleport>
+        </template>
     </div>
 </template>
 
-<style lang="scss">
+<!-- <style>
 $search-input-width: 400px;
 $search-dialog-padding: 20px;
 $search-dialog-position-left: $search-input-width + ($search-dialog-padding * 2);
@@ -138,4 +158,4 @@ $search-dialog-position-left: $search-input-width + ($search-dialog-padding * 2)
 
     background-color: rgba(40, 40, 40, 0.6);
 }
-</style>
+</style> -->
