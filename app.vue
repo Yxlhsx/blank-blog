@@ -2,37 +2,18 @@
 
 <template>
     <AppNav />
-    <div class="app-container">
+    <div class="sm:flex justify-center">
         <AppSidebar />
-        <main>
+        <main class="mt-5 w-auto sm:w-5/12">
             <NuxtPage />
         </main>
     </div>
 </template>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-}
 body {
-    /* overflow: hidden; */
+    overflow: hidden;
+    overflow-y: scroll;
     background-color: #f3f3f3;
-}
-
-div.app-container {
-    display: flex;
-    justify-content: center;
-}
-
-.app-sidebar {
-    margin: 20px 20px 0 0;
-}
-
-main {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 800px;
-    min-height: calc(100vh - 60px);
 }
 </style>

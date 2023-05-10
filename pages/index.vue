@@ -6,7 +6,7 @@ articleList.value = await queryContent<Article>('/article').find()
 </script>
 
 <template>
-    <div>
+    <div class="flex flex-col max-sm:items-center px-5 sm:px-0">
         <ArticleItem
             v-for="article in articleList"
             :path="article._path"
