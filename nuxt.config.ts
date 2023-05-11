@@ -5,6 +5,7 @@ export default defineNuxtConfig({
         head: { title: '空白博客' }
     },
     modules: ['@nuxtjs/tailwindcss', '@nuxt/content'],
+    tailwindcss: {},
     content: {
         highlight: true
     }
