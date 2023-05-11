@@ -1,14 +1,11 @@
 <template>
-    <div class="article-container">
+    <div class="box-border overflow-x-scroll max-sm:mx-5 p-5 sm:p-8 bg-white rounded-lg">
         <ContentDoc />
     </div>
 </template>
 
 <style>
-.article-container {
-    box-sizing: border-box;
-    padding: 10px;
-    background-color: #ffffff;
-    border-radius: 10px;
+pre {
+    background-color: black;
 }
 </style>

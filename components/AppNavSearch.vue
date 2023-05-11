@@ -48,19 +48,22 @@ const handleQuery = async () => {
             <div
                 class="z-[100] fixed top-0 left-0 flex justify-center items-center w-screen h-screen bg-black bg-opacity-30 backdrop-blur"
             >
-                <div class="overflow-auto p-4 h-[60vh] bg-white rounded-md" ref="searchBlockEle">
+                <div
+                    class="overflow-auto p-4 h-[60vh] bg-white rounded-md text-center"
+                    ref="searchBlockEle"
+                >
                     <input
                         v-model="searchValue"
-                        class="px-3 w-96 h-10 bg-gray-100 rounded-md text-gray-900 text-xl font-normal"
+                        class="px-3 w-11/12 sm:w-96 h-10 bg-gray-100 rounded-md text-gray-900 text-xl font-normal"
                         ref="searchInputEle"
-                        type="text"
+                        type="search"
                         :placeholder="props.placeholder || '请输入关键词'"
                         @keypress.enter="handleQuery"
                     />
-                    <ul class="px-3 list-none">
+                    <ul class="px-3 list-none text-left">
                         <li v-for="(article, index) in articleList" class="py-2">
-                            <!-- <span style="text-decoration: none">{{ index + 1 }}、</span> -->
-                            <NuxtLink class="decoration-2" :to="article._path">
+                            <span class="no-underline">{{ index + 1 }}、</span>
+                            <NuxtLink class="underline" :to="article._path">
                                 {{ article.title }}
                             </NuxtLink>
                         </li>

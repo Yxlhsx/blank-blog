@@ -1,19 +1,13 @@
-<script setup lang="ts"></script>
+<script lang="ts" setup></script>
 
 <template>
-    <AppNav />
-    <div class="sm:flex justify-center">
-        <AppSidebar />
-        <main class="mt-5 w-auto sm:w-5/12">
-            <NuxtPage />
-        </main>
-    </div>
+    <Body class="overflow-hidden overflow-y-scroll bg-[#f3f3f3] text-[#282828]">
+        <AppNav />
+        <div class="sm:flex justify-center">
+            <AppSidebar />
+            <main class="mt-5 pb-10 w-auto sm:w-5/12">
+                <NuxtPage />
+            </main>
+        </div>
+    </Body>
 </template>
-
-<style>
-body {
-    overflow: hidden;
-    overflow-y: scroll;
-    background-color: #f3f3f3;
-}
-</style>

@@ -1,6 +1,11 @@
 <script setup lang="ts">
+import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
+
 const router = useRouter()
 const route = useRoute()
+
+const breakpoints = useBreakpoints(breakpointsTailwind)
+const hasMobileSize = breakpoints.smaller('sm')
 
 function handleGoBack() {
     router.go(-1)
@@ -53,50 +58,34 @@ const tags = ref([
         link: ''
     }
 ])
-
-function copy(text: string) {
-    if (navigator.clipboard) {
-        navigator.clipboard
-            .writeText(text)
-            .then(() => {
-                alert('已复制到剪贴板！')
-            })
-            .catch(err => {
-                console.error('复制失败：', err)
-            })
-    } else {
-        const input = document.createElement('input')
-        input.value = text
-        document.body.appendChild(input)
-        input.select()
-        if (document.execCommand('copy')) {
-            document.execCommand('copy')
-            alert('已复制到剪贴板！')
-        }
-        document.body.removeChild(input)
-    }
-}
 </script>
 
 <template>
     <aside class="px-5 sm:px-0 sm:w-72">
         <!-- 回退栏 -->
-        <section v-show="route.path != '/'" class="mt-5 mr-5 p-5 rounded-lg bg-white text-center">
-            <span class="go-back" @click="handleGoBack">返回上一页</span>
+        <section
+            v-show="route.path != '/'"
+            class="mt-5 mr-0 sm:mr-5 p-3 rounded-lg bg-white text-base font-semibold text-center cursor-pointer"
+            @click="handleGoBack"
+        >
+            <span class="go-back">返回上一页</span>
         </section>
 
-        <div class="flex sm:block justify-between">
+        <div v-show="!(hasMobileSize && route.path != '/')" class="flex sm:block justify-between">
             <!-- 用户栏 -->
-            <section class="mt-5 mr-5 p-5 max-sm:w-1/2 rounded-lg bg-white">
+            <section class="mt-5 mr-5 p-3 max-sm:w-1/2 rounded-lg bg-white">
                 <div class="flex justify-evenly items-center mb-5">
-                    <img class="w-16 h-16" src="~assets/logo.png" alt="logo" />
+                    <img class="w-10 sm:w-16 h-10 sm:h-16" src="~assets/logo.png" alt="logo" />
                     <div class="text-center">
-                        <h3 class="text-xl">嘎嘣脆</h3>
-                        <h5 class="text-sm">“努力，奋斗”</h5>
+                        <h3 class="text-xl font-semibold">嘎嘣脆</h3>
+                        <h5 class="text-[#28282899] text-sm">“努力，奋斗”</h5>
                     </div>
                 </div>
                 <ul class="flex justify-evenly list-none">
-                    <li v-for="item in links" class="text-sm decoration-1">
+                    <li
+                        v-for="item in links"
+                        class="text-opacity-60 text-sm underline cursor-pointer"
+                    >
                         <span v-if="item.link.includes('@')" @click="copy(item.link)">{{
                             item.name
                         }}</span>
@@ -106,10 +95,13 @@ function copy(text: string) {
             </section>
 
             <!-- 标签栏 -->
-            <section class="mt-5 sm:mr-5 p-5 max-sm:w-1/2 rounded-lg bg-white">
-                <h2 class="text-xl text-center">标签</h2>
-                <ul class="overflow-y-scroll flex flex-wrap mt-3 max-h-16 list-none">
-                    <li v-for="tag in tags" class="mr-2 text-sm decoration-0">
+            <section class="mt-5 sm:mr-5 p-3 max-sm:w-1/2 rounded-lg bg-white">
+                <h2 class="text-xl font-semibold text-center">标签</h2>
+                <ul class="max-sm:overflow-y-scroll flex flex-wrap mt-3 max-sm:max-h-14 list-none">
+                    <li
+                        v-for="tag in tags"
+                        class="mr-3 text-[#28282899] text-sm underline cursor-pointer"
+                    >
                         {{ `#${tag.name}(${tag.count})` }}
                     </li>
                 </ul>
