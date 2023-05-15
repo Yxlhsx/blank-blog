@@ -1,5 +1,3 @@
-<script lang="ts" setup></script>
-
 <template>
     <Body class="overflow-hidden overflow-y-scroll bg-[#f3f3f3] text-[#282828]">
         <AppNav />

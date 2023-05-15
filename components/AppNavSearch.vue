@@ -30,9 +30,17 @@ onClickOutside(searchBlockEle, event => {
 const searchValue = ref('')
 const articleList = ref<Article[]>([])
 const handleQuery = async () => {
-    articleList.value = await queryContent<Article>('/')
-        .where({ keywords: { $contains: searchValue.value } })
-        .find()
+    const { data } = await useAsyncData('searchArticleList', () =>
+        queryContent<Article>('/article')
+            .where({
+                keywords: { $contains: searchValue.value }
+            })
+            .find()
+    )
+
+    if (data.value) {
+        articleList.value = data.value
+    }
 }
 </script>
 

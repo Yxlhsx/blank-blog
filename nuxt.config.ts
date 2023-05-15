@@ -1,12 +1,13 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
     app: {
-        baseURL: '/blank-blog',
+        buildAssetsDir: '/static/',
         head: { title: '空白博客' }
     },
     modules: ['@nuxtjs/tailwindcss', '@nuxt/content'],
-    tailwindcss: {},
     content: {
-        highlight: true
+        highlight: {
+            theme: 'one-dark-pro'
+        }
     }
 })
