@@ -66,6 +66,7 @@ const handleQuery = async () => {
                         ref="searchInputEle"
                         type="search"
                         :placeholder="props.placeholder || '请输入关键词'"
+                        @input="handleQuery"
                         @keypress.enter="handleQuery"
                     />
                     <ul class="px-3 list-none text-left">

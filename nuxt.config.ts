@@ -5,7 +5,12 @@ export default defineNuxtConfig({
         head: { title: '空白博客' }
     },
     modules: ['@nuxtjs/tailwindcss', '@nuxt/content'],
+    ssr: false,
     content: {
+        experimental: {
+            clientDB: true
+        },
+        documentDriven: true,
         highlight: {
             theme: 'one-dark-pro'
         }

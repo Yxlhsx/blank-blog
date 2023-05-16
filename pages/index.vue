@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Article } from '~~/types/article'
 
-const { data } = await useAsyncData('homeArticleList', () =>
+const { data } = await useLazyAsyncData('homeArticleList', () =>
     queryContent<Article>('/article').find()
 )
 </script>
