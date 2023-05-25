@@ -2,11 +2,6 @@
 import { onClickOutside } from '@vueuse/core'
 import { Article } from '~~/types/article'
 
-interface AppNavSearchProps {
-    placeholder?: string
-}
-const props = defineProps<AppNavSearchProps>()
-
 // 搜索输入框实例
 const searchInputEle = ref<HTMLInputElement>()
 
@@ -65,7 +60,7 @@ const handleQuery = async () => {
                         class="px-3 w-11/12 sm:w-96 h-10 bg-gray-100 rounded-md text-gray-900 text-xl font-normal"
                         ref="searchInputEle"
                         type="search"
-                        :placeholder="props.placeholder || '请输入关键词'"
+                        placeholder="请输入关键词"
                         @input="handleQuery"
                         @keypress.enter="handleQuery"
                     />

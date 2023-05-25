@@ -7,7 +7,7 @@ const { data } = await useLazyAsyncData('homeArticleList', () =>
 </script>
 
 <template>
-    <div class="flex flex-col max-sm:items-center px-5 sm:px-0">
+    <div class="flex flex-col max-sm:items-center px-4 sm:px-0">
         <ArticleItem
             v-for="article in data"
             :path="article._path"
