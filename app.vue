@@ -7,5 +7,8 @@
                 <NuxtPage />
             </main>
         </div>
+        <footer class="pb-2 text-center underline">
+            <NuxtLink href="https://beian.miit.gov.cn/">湘ICP备20003316号</NuxtLink>
+        </footer>
     </Body>
 </template>
