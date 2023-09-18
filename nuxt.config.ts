@@ -4,7 +4,7 @@ export default defineNuxtConfig({
         buildAssetsDir: '/static/',
         head: { title: '空白博客' }
     },
-    modules: ['@nuxtjs/tailwindcss', '@nuxt/content'],
+    modules: ['@nuxtjs/tailwindcss', '@nuxt/content', '@formkit/auto-animate/nuxt'],
     ssr: false,
     content: {
         experimental: {

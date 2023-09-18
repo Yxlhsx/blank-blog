@@ -61,17 +61,17 @@ const tags = ref([
 </script>
 
 <template>
-    <aside class="px-5 sm:px-0 sm:w-72">
+    <aside v-auto-animate class="px-5 sm:px-0 sm:w-72">
         <!-- 回退栏 -->
         <section
-            v-show="route.path != '/'"
+            v-if="route.path != '/'"
             class="mt-5 mr-0 sm:mr-5 p-3 rounded-lg bg-white text-base font-semibold text-center cursor-pointer"
             @click="handleGoBack"
         >
             <span class="go-back">返回上一页</span>
         </section>
 
-        <div v-show="!(hasMobileSize && route.path != '/')" class="flex sm:block justify-between">
+        <div v-if="!(hasMobileSize && route.path != '/')" class="flex sm:block justify-between">
             <!-- 用户栏 -->
             <section class="mt-5 mr-5 p-3 max-sm:w-1/2 rounded-lg bg-white">
                 <div class="flex justify-evenly items-center mb-5">
